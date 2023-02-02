@@ -2,10 +2,10 @@ import java.io.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 
-@WebServlet("/count")
+@WebServlet(name = "PageViewCounter", urlPatterns = "/count")
 public class PageViewCounter extends HttpServlet {
 
-  private int count = 0;
+  private int count;
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
