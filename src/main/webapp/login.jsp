@@ -3,15 +3,17 @@
 <%@include file="./partials/head.jsp"%>
 <body>
   <%@include file="./partials/navbar.jsp"%>
-  <%
+<%
+  if (request.getMethod().equalsIgnoreCase("post")) {
     String username = request.getParameter("username");
     String password = request.getParameter("password");
-    if (username != null && password != null) {
-  if (username.equals("admin") && password.equals("password")) {
-    response.sendRedirect("/profile.jsp");
-  } else {
-    response.sendRedirect("/login.jsp");
-  }%>
+    if (username.equals("admin") && password.equals("password")) {
+      session.setAttribute("Name", username);
+      response.sendRedirect("/profile.jsp");
+    }
+  }
+%>
+  <h4>Please Login</h4>
   <form action="/login.jsp" method="post">
     <div>
       <label for="username">Username:</label>
@@ -26,6 +28,7 @@
   <%
     }
   %>
+  <%@include file="./webapp/js/app.js"%>
 </body>
 </html>
 

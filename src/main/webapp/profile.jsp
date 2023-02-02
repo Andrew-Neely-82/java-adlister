@@ -2,9 +2,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="./partials/head.jsp"%>
 <body>
-  <%@include file="./partials/navbar.jsp"%>
-<h1>Welcome, <%-- TODO: make username var? --%>User!</h1>
+    <jsp:include page="partials/navbar.jsp" />
+    <h1>Hello, <%=session.getAttribute("Name")%>!</h1>
 </body>
+    <jsp:include page="partials/scripts.jsp" />
 </html>
 
 <%--
