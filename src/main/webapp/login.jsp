@@ -28,14 +28,6 @@
   <%
     }
   %>
-  <%@include file="./webapp/js/app.js"%>
+  <jsp:include page="./js/app.js" />
 </body>
 </html>
-
-<%--
-  Created by IntelliJ IDEA.
-  User: andrewneely
-  Date: 2/2/23
-  Time: 11:01 AM
-  To change this template use File | Settings | File Templates.
---%>

@@ -4,8 +4,8 @@
 <body>
     <jsp:include page="partials/navbar.jsp" />
     <h1>Hello, <%=session.getAttribute("Name")%>!</h1>
+    <jsp:include page="./js/app.js" />
 </body>
-    <jsp:include page="partials/scripts.jsp" />
 </html>
 
 <%--
