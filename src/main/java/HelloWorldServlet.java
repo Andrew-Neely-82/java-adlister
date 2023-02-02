@@ -1,15 +1,25 @@
-import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 import java.io.*;
 
-@WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello-world")
+@WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello")
 public class HelloWorldServlet extends HttpServlet {
 
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    response.setContentType("text/html");
-    PrintWriter out = response.getWriter();
-    out.println("<h1>Hello, World!</h1>");
+  protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    int count;
+    try {
+      count = Integer.parseInt(req.getParameter("count"));
+    } catch (Exception e) {
+      count = 1;
+    }
+    String name = req.getParameter("name");
+    if (name == null) {
+      name = "World";
+    }
+    res.setContentType("text/html");
+    PrintWriter out = res.getWriter();
+    for (int i = 0; i < count; i++) {
+      out.println("<h1>Hello, " + name + "!</h1>");
+    }
   }
 }
