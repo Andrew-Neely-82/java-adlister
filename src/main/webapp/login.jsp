@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="header.jsp"%>
+<%@include file="./partials/head.jsp"%>
 <body>
-  <%@include file="nav.jsp"%>
+  <%@include file="./partials/navbar.jsp"%>
   <%
     String username = request.getParameter("username");
     String password = request.getParameter("password");
