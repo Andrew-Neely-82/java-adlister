@@ -3,6 +3,7 @@
 <%@include file="./partials/head.jsp"%>
 <body>
   <%@include file="./partials/navbar.jsp"%>
+<h1>Welcome, <%-- TODO: make username var? --%>User!</h1>
 </body>
 </html>
 
