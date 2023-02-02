@@ -25,9 +25,5 @@
     </div>
     <input type="submit" value="Submit" />
   </form>
-  <%
-    }
-  %>
-  <jsp:include page="./js/app.js" />
 </body>
 </html>
