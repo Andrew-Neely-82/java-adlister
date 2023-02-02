@@ -7,13 +7,34 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Title</title>
+<title>Login Page</title>
 </head>
 <body>
-  <form>
-
+  <%
+    String username = request.getParameter("username");
+    String password = request.getParameter("password");
+    if (username != null && password != null) {
+  if (username.equals("admin") && password.equals("password")) {
+    response.sendRedirect("/profile.jsp");
+  } else {
+    response.sendRedirect("/login.jsp");
+  }%>
+  <form action="/login.jsp" method="post">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
+    </div>
+    <input type="submit" value="Submit" />
   </form>
+  <%
+    }
+  %>
 </body>
 </html>
