@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="./partials/head.jsp"%>
 <body>
   <%@include file="./partials/navbar.jsp"%>
@@ -14,7 +14,7 @@
   }
 %>
   <h4>Please Login</h4>
-  <form action="/login.jsp" method="post">
+  <form action="${pageContext.request.contextPath}" method="post">
     <div>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" />
