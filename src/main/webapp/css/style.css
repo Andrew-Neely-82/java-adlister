@@ -1,0 +1,10 @@
+body {
+    color: white;
+    background: black;
+}
+
+.order-confirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
