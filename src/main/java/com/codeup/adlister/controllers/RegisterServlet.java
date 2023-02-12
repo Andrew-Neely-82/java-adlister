@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,30 +13,32 @@ import java.io.IOException;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
-    }
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+  }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String passwordConfirmation = request.getParameter("confirm_password");
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String username = request.getParameter("username");
+    String email = request.getParameter("email");
+    String password = request.getParameter("password");
+    String passwordConfirmation = request.getParameter("confirm_password");
 
-        // validate input
-        boolean inputHasErrors = username.isEmpty()
+    // validate input
+    boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()
             || password.isEmpty()
-            || (! password.equals(passwordConfirmation));
+            || (!password.equals(passwordConfirmation));
 
-        if (inputHasErrors) {
-            response.sendRedirect("/register");
-            return;
-        }
-
-        // create and save a new user
-        User user = new User(username, email, password);
-        DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
+    if (inputHasErrors) {
+      response.sendRedirect("/register");
+      return;
     }
+
+    password = Password.hash(password);
+//
+    // create and save a new user
+    User user = new User(username, email, password);
+    DaoFactory.getUsersDao().insert(user);
+    response.sendRedirect("/login");
+  }
 }
